@@ -5,4 +5,5 @@ const url='https://vet-plus.herokuapp.com/posts';
 
 export const fetchPosts =()=> axios.get(url);
 export const createPost = (newPost) => axios.post(url, newPost);
-export const deletepost = () => axios.delete(url,);
+export const deletePost = (id) => axios.delete(`${url}/${id}`);
+export const updatePost=(id , postData)=> axios.patch(`${url}/${id}`,postData);
