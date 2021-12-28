@@ -19,7 +19,7 @@ export const createPost = (post)=> async(dispatch) =>{
 } catch (error) {
         console.log(error.message);
     }    
-    // const action = ;//payload is data where we store all of our posts  
+ 
 }
 
 export const updatePost = (id,post)=> async(dispatch) =>{
@@ -41,4 +41,15 @@ export const deletePost = (id)=> async(dispatch) =>{
         console.log(error.message);
     }    
       
+}
+
+export const likePost=(id) => async(dispatch)=>{
+    try{
+        const {data} = await api.likePost(id);
+        dispatch({type:'LIKE', payload:data})
+    } catch (error) {
+        console.log(error.message);
+    }  
+
+
 }

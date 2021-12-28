@@ -1,4 +1,5 @@
 // posts ---> state
+//dispatch({type:'LIKE', payload:data})
 export default (posts = [], action)=>{
      switch (action.type) {
       case "FETCH_ALL":
@@ -6,9 +7,11 @@ export default (posts = [], action)=>{
       case "CREATE":
         return [...posts, action.payload];
       case "UPDATE":
+      case "LIKE":
         return posts.map((post) => post._id === action.payload._id ? action.payload :  post); // action.payload is the updating post
       case "DELETE":
         return posts.filter((post) => post._id !== action.payload);
+
       default:
         return "";
     }
