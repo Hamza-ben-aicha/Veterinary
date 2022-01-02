@@ -1,17 +1,19 @@
 // posts ---> state
 //dispatch({type:'LIKE', payload:data})
+
+import {CREATE,UPDATE,DELETE,FETCH_ALL,LIKE} from '../constants/actionType';
+
 export default (posts = [], action)=>{
      switch (action.type) {
-      case "FETCH_ALL":
+      case  FETCH_ALL :
         return action.payload;
-      case "CREATE":
+      case  CREATE :
         return [...posts, action.payload];
-      case "UPDATE":
-      case "LIKE":
+      case  UPDATE :
+      case  LIKE :
         return posts.map((post) => post._id === action.payload._id ? action.payload :  post); // action.payload is the updating post
-      case "DELETE":
+      case  DELETE :
         return posts.filter((post) => post._id !== action.payload);
-
       default:
         return "";
     }

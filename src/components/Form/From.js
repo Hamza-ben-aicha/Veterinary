@@ -14,38 +14,51 @@ const Form =({currentId,setCurrentId})=>{
     
     const classes = useStyles();
     const [postData, setPostData]= useState({
-        creator:"", 
         title:"", 
         message:"",
         selectedFile:"none"
     })
 
+    const user=JSON.parse(localStorage.getItem('profile'));
+
     useEffect(() => {
       if (post) setPostData(post);
     }, [post]);
 
-
-    const dispatch = useDispatch();
-    const handleSumbit=(e)=>{
-        e.preventDefault();
-        if(currentId){
-          dispatch(updatePost(currentId,postData));
-          clear(); 
-        }else{
-          dispatch(createPost(postData));
-          clear(); 
-        }
-    }
-
     const clear=()=>{
         setCurrentId(null);
         setPostData({
-          creator: "",
           title: "",
           message: "",
           selectedFile: "none",
         });   
     }
+
+    const dispatch = useDispatch();
+    
+    const handleSumbit=(e)=>{
+        e.preventDefault();
+        if(currentId){
+          dispatch(updatePost(currentId,{...postData, name :user?.result?.name}));
+          clear(); 
+        }else{
+          dispatch(createPost({...postData, name :user?.result?.name}));
+          clear(); 
+        }
+    }
+    
+    if (!user?.result?.name) {
+      return (
+          <Paper className={classes.paper}>
+              <Typography variant="h6" align="center">
+                Please Sign In , to create you own post
+              </Typography>
+          </Paper>
+      )
+    }
+
+
+  
 
 
     return (
@@ -53,7 +66,7 @@ const Form =({currentId,setCurrentId})=>{
       <Paper className={classes.paper}>
         <form  autoComplete="off" noValidate  className={`${classes.root} ${classes.form}`} onSubmit={handleSumbit} >
             <Typography variant="h6">{currentId ? 'Editing': 'Creating'} a Post</Typography>
-            <TextField name="creator" variant="outlined" label="creator" fullWidth value={postData.creator} onChange={(e)=> setPostData({...postData, creator : e.target.value})}/>
+            {/* <TextField name="creator" variant="outlined" label="creator" fullWidth value={postData.creator} onChange={(e)=> setPostData({...postData, creator : e.target.value})}/> */}
             <TextField name="title" variant="outlined" label="title" fullWidth value={postData.title} onChange={(e)=> setPostData({...postData, title : e.target.value})}/>
             <TextField name="message" variant="outlined" label="message" fullWidth value={postData.message} onChange={(e)=> setPostData({...postData, message : e.target.value})}/>
             <div className={classes.fileInput}><FileBase type="jpg" multiple={false} onDone={(base64)=> setPostData({...postData, selectedFile: base64.base64})}/></div>
