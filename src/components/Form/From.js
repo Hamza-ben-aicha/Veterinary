@@ -57,10 +57,6 @@ const Form =({currentId,setCurrentId})=>{
       )
     }
 
-
-  
-
-
     return (
       //paper is like a div that has a wihtish background
       <Paper className={classes.paper}>

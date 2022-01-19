@@ -1,4 +1,4 @@
-import {AUTH,ALLUSER}from '../constants/actionType';
+import {AUTH}from '../constants/actionType';
 import * as api from '../api/index.js';
 
 export const signin =(formData,history) => async(dispatch)=>{
@@ -34,12 +34,12 @@ export const signup =(formData,history) => async(dispatch)=>{
 }
 
 
-export const getUsers = ()=> async(dispatch) =>{
-    try {
-        const {data} = await api.getUsers();
-        dispatch({ type: ALLUSER, payload: data });    
-} catch (error) {
-        console.log(error);
-    }    
-    // const action = ;//payload is data where we store all of our posts  
-}
+// export const getUsers = ()=> async(dispatch) =>{
+//     try {
+//         const {data} = await api.getUsers();
+//         dispatch({ type: ALLUSER, payload: data });    
+// } catch (error) {
+//         console.log(error);
+//     }    
+//     // const action = ;//payload is data where we store all of our posts  
+// }

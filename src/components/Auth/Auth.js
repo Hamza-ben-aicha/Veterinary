@@ -6,7 +6,7 @@ import LockOutLinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
 import Input from "./Input";
 import { useNavigate } from "react-router-dom";
-import { signin, signup,getUsers } from "../../actions/auth";
+import { signin, signup } from "../../actions/auth";
 
 
 const initialState = {
@@ -61,9 +61,9 @@ export const Auth = () => {
   };
 
 
-  useEffect(() => {
-    dispatch(getUsers());
-  });
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // });
 
 
   return (
