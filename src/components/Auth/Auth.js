@@ -94,7 +94,7 @@ export const Auth = () => {
           <GoogleLogin
             clientId="637118768601-2mh7db33v2vk97kvbcf6nje018g5379q.apps.googleusercontent.com"
             render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} variant="contained">
+              <Button className={classes.googleButton}  color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} variant="contained">
                 {" "}
                 Google Sign In
               </Button>

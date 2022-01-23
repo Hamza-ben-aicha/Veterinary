@@ -17,7 +17,7 @@ export default makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    // borderRadius: '15px',
+    //borderRadius: '15px',
     height: '100%',
     position: 'relative',
   },
@@ -49,4 +49,8 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  cardTitle:{
+      backgroundColor:'#ede7e7',
+      
+  }
 });

@@ -10,11 +10,12 @@ const Posts =({setCurrentId})=>{
   const classes = useStyles();
 
     return !posts.length ? (
+      //console.log("Loading ...")
       <CircularProgress />
     ) : (
       <Grid className={classes.mainContainer} container alignItems="stretch" spacing={3}>
         {posts.map((post) => (
-          <Grid key={post.id} item xs={12} sm={6}>
+          <Grid key={post.id} item xs={12} sm={12} md={12}>
             <Post post={post} setCurrentId={setCurrentId}/>
           </Grid>
         ))}
